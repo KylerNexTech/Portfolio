@@ -1,0 +1,183 @@
+/* ==========================================================================
+   ABOUT — page hero, fragments, changelog, stack, manifesto, contact
+   ========================================================================== */
+
+/* ---- Shared page hero (also used on projects.html) ---- */
+.page-hero {
+  padding-block: var(--space-12) var(--space-8);
+  max-width: 720px;
+}
+.page-hero__eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+.page-hero__title {
+  font-size: var(--fs-4xl);
+  margin-bottom: var(--space-4);
+}
+.page-hero__lede {
+  font-size: var(--fs-md);
+  color: var(--color-text-dim);
+}
+
+/* ---- Fragments ---- */
+.fragments {
+  padding-block: var(--space-10);
+}
+.fragments__intro {
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-6);
+  max-width: 60ch;
+}
+.fragments__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+.fragment-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+.fragment-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+.fragment-card__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+}
+.fragment-card h3 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+.fragment-card p {
+  color: var(--color-text-dim);
+  font-size: var(--fs-sm);
+}
+@media (max-width: 900px) {
+  .fragments__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .fragments__grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Changelog ---- */
+.changelog {
+  padding-block: var(--space-10);
+}
+.changelog__intro {
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-7);
+  max-width: 60ch;
+}
+.changelog__list {
+  position: relative;
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--color-border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+.changelog__entry {
+  position: relative;
+}
+.changelog__entry::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * var(--space-6) - 5px);
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-text-faint);
+}
+.changelog__entry--current::before {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+.changelog__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+}
+.changelog__version {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-accent);
+  font-size: var(--fs-sm);
+}
+.changelog__date {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.changelog__desc {
+  color: var(--color-text-dim);
+  max-width: 60ch;
+}
+.changelog__entry--current .changelog__desc {
+  color: var(--color-text);
+}
+
+/* ---- Stack ---- */
+.stack {
+  padding-block: var(--space-10);
+}
+.stack__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.stack__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+.stack__key {
+  color: var(--color-accent-2);
+  min-width: 90px;
+}
+.stack__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* ---- Manifesto ---- */
+.manifesto {
+  padding-block: var(--space-12);
+  max-width: 780px;
+}
+.manifesto__quote {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  line-height: 1.45;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-accent-2);
+  padding-left: var(--space-6);
+}
+
+/* ---- Contact CTA ---- */
+.contact-cta {
+  padding-block: var(--space-10) var(--space-16);
+  max-width: 600px;
+}
+.contact-cta__text {
+  color: var(--color-text-dim);
+  margin-bottom: var(--space-6);
+}

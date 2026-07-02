@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enter</title>
-  <link rel="stylesheet" href="hero.css">
+<link rel="stylesheet" href="hero.css">
 </head>
 <body>
 
@@ -12,20 +12,31 @@
 
   <div class="stage">
     <div class="glow"></div>
-    <!-- hero img -->
-    <img class="hero-image" src="../Images/hero-image.jpg" alt="Hero Image">
+    <!-- Replace this src with your own vertical image -->
+    <img class="hero-image" src="../Images/heroImage.gif" alt="" id="heroImage">
   </div>
 
-  <div class="enter-hint">Enter</div>
+  <!-- white cloud / wind-burst effects get inserted here at runtime -->
+  <div id="burstLayer"></div>
+
+  <!-- cracks get drawn into this, sized to match the hero image -->
+  <svg id="cracksOverlay"></svg>
+
+  <div class="hud">
+    <div id="statusHint">Click to continue</div>
+  </div>
 
   <button class="sound-toggle" id="soundToggle" aria-label="Toggle background music">
     <svg id="soundIcon" viewBox="0 0 24 24"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
   </button>
 
-  <!-- music file -->
-  <audio id="bgMusic" src="../SFX/background-music.mp3" loop preload="auto"></audio>
-  <script src="hero.js"></script>
-  
+  <!-- Replace this src with your own hammer image -->
+  <img id="hammerCursor" src="../Images/hammer2.png" alt="">
 
+  <!-- Replace this src with your own music file -->
+  <audio id="bgMusic" src="../SFX/background-music.mp3" loop preload="auto"></audio>
+  <audio id="Mace" src="../SFX/Mace_smash_air3.ogg.mp3" loop preload="auto"></audio>
+
+  <script src="index.js"></script>
 </body>
 </html>

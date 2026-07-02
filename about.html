@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('portfolio:theme');
+      var theme = (stored === 'dark' || stored === 'light')
+        ? stored
+        : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Kyler Smith</title>
+<meta name="description" content="About Kyler Smith — background and progress.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0d'/><path d='M22 34 L48 50 L22 66' stroke='%233ff0e0' stroke-width='9' fill='none' stroke-linecap='round' stroke-linejoin='round'/><line x1='56' y1='68' x2='80' y2='68' stroke='%23ff3fa4' stroke-width='9' stroke-linecap='round'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/glitch.css">
+<link rel="stylesheet" href="css/about.css">
+
+<script src="js/data.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/sound.js" defer></script>
+<script src="js/effects.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/settings-panel.js" defer></script>
+<script src="js/main.js" defer></script>
+</head>
+<body data-page="about">
+<div class="scanlines" aria-hidden="true"></div>
+<noscript><div class="noscript-banner">This site's navigation and effects need JavaScript. The content below still works without it.</div></noscript>
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="home.html" class="logo" data-nav-link>
+      <span class="logo__mark" aria-hidden="true">&lt;/&gt;</span>
+      <span class="logo__text glitch-hover" data-text="KYLER SMITH">KYLER SMITH</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNavList">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <ul class="site-nav__list" id="siteNavList">
+        <li><a href="home.html" data-nav-link class="site-nav__link">Home</a></li>
+        <li><a href="about.html" data-nav-link class="site-nav__link" aria-current="page">About</a></li>
+        <li><a href="projects.html" data-nav-link class="site-nav__link">Projects</a></li>
+      </ul>
+    </nav>
+    <button class="icon-btn settings-toggle" id="settingsToggle" aria-haspopup="dialog" aria-controls="settingsPanel" aria-expanded="false" aria-label="Open settings">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2" fill="var(--color-surface)"/>
+        <line x1="4" y1="12" x2="20" y2="12"/><circle cx="16" cy="12" r="2" fill="var(--color-surface)"/>
+        <line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2" fill="var(--color-surface)"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero container">
+    <p class="page-hero__eyebrow">/// 01 — IDENTITY</p>
+    <h1 class="page-hero__title glitch" data-text="About Me">About Me</h1>
+    <p class="page-hero__lede">
+      I'm Kyler Smith, a game designer and developer. I'm sixteen years old and I've been making games for 9 years and Roblox games for 4 years. I love to create and learn new things, and I'm always looking for new challenges.
+    </p>
+  </section>
+
+  <!-- ============================== FRAGMENTS ============================== -->
+  <section class="fragments container">
+    <h2 class="section-title" data-scramble>Soft Skills</h2>
+    <p class="fragments__intro">Six things that stay true across most of what I build.</p>
+    <div class="fragments__grid">
+      <article class="fragment-card">
+        <span class="fragment-card__num">FRAG_01</span>
+        <h3>Growth</h3>
+        <p>I persevere through any unfamiliar matter and seek improvement in my work.</p>
+      </article>
+      <article class="fragment-card"> 
+        <span class="fragment-card__num">FRAG_02</span>
+        <h3>Precision</h3>
+        <p>Details are intentional. They're where the underlying meaning shows up. </p>
+      </article>
+      <article class="fragment-card">
+        <span class="fragment-card__num">FRAG_03</span>
+        <h3>Judgement</h3>
+        <p> I have a strong sense of project direction and make objectively correct decisions.</p>
+      </article>
+      <article class="fragment-card">
+        <span class="fragment-card__num">FRAG_04</span>
+        <h3>Empathy</h3>
+        <p>User driven design is the best kind of design.</p>
+      </article>
+      <article class="fragment-card">
+        <span class="fragment-card__num">FRAG_05</span>
+        <h3>Creative (Excessively)</h3>
+        <p>Idea's influx uncontrollably, but at least it'll be unique. </p>
+      </article>
+      <article class="fragment-card">
+        <span class="fragment-card__num">FRAG_06</span>
+        <h3>Logical</h3>
+        <p>Many ideas arise, the most meaningful ones stay.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================== CHANGELOG ============================== -->
+  <section class="changelog container">
+    <h2 class="section-title" data-scramble>Version History</h2>
+    <p class="changelog__intro">A career and a life, read like a commit log. Ordered chronologically by v'decades'.'years'.'months'.</p>
+    <ol class="changelog__list">
+      <li class="changelog__entry">
+        <div class="changelog__meta"><span class="changelog__version">v0.1.0</span><span class="changelog__date">Early direction</span></div>
+        <p class="changelog__desc">First boot. Surrounded by electronic devices. Born curious, destined to learn.</p>
+      </li>
+      <li class="changelog__entry">
+        <div class="changelog__meta"><span class="changelog__version">v0.4.0</span><span class="changelog__date">Turning point</span></div>
+        <p class="changelog__desc">
+         Fell in love with games, starting paying attention to their design and concepts.
+        </p>
+        <li class="changelog__entry">
+          <div class="changelog__meta"><span class="changelog__version">v0.8.0</span><span class="changelog__date">Journey begins</span></div>
+          <p class="changelog__desc">Wrote my first line of code and never really stopped. But I wanted to make even bigger projects.</p>
+        </li>
+      </li>
+      <li class="changelog__entry">
+        <div class="changelog__meta"><span class="changelog__version">v1.2.0</span><span class="changelog__date">Breaking change</span></div>
+        <p class="changelog__desc">
+          Starting creating Roblox games. Learned how to work with a team and create a product. Learned how to make a user focused product.
+        </p>
+      </li>
+      <li class="changelog__entry">
+        <div class="changelog__meta"><span class="changelog__version">v1.4.0</span><span class="changelog__date">Growth phase</span></div>
+        <p class="changelog__desc">
+          <!-- Replace: a period of real growth — a job, a project, a mentor, a failure. -->
+          Started managing my own teams. Got faster and more deliberate at the same time. Turns out those aren't opposites.
+        </p>
+      </li>
+      <li class="changelog__entry changelog__entry--current">
+        <div class="changelog__meta"><span class="changelog__version">v1.6.0</span><span class="changelog__date">Current day</span></div>
+        <p class="changelog__desc">Still learning and growing. Each project more refined than the last. </p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================== STACK ============================== -->
+  <section class="stack container">
+    <h2 class="section-title" data-scramble>Dependencies</h2>
+    <div class="terminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
+        <span class="terminal__title">devKit.json</span>
+      </div>
+      <div class="terminal__body stack__body">
+        <div class="stack__row">
+          <span class="stack__key">"core"</span>
+          <div class="stack__chips">
+            <span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span>
+            <span class="chip">Lua</span>
+          </div>
+        </div>
+        <div class="stack__row">
+          <span class="stack__key">"tools"</span>
+          <div class="stack__chips">
+            <span class="chip">Figma</span><span class="chip">VS Code</span>
+            <span class="chip">Roblox Studio</span><span class="chip">CapCut</span>
+          </div>
+        </div>
+        <div class="stack__row">
+          <span class="stack__key">"learning"</span>
+          <div class="stack__chips">
+            <!-- <span class="chip chip--accent">WebGL</span><span class="chip chip--accent">Rust</span> -->
+            <span class="chip">GitHub</span><span class="chip">Blender</span><span class="chip">Unity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MANIFESTO ============================== -->
+  <section class="manifesto container">
+    <blockquote class="manifesto__quote">
+      Throughout history ambition has been the cause behind success, peace, and prosperity.
+       The greatest innovations of humanity were not created from complacency; they were created from desire. <br>-<span class="glitch-hover" data-text="Kyler Smith">Kyler Smith</span>
+    </blockquote>
+  </section>
+
+  <!-- ============================== CONTACT CTA ============================== -->
+  <section class="contact-cta container">
+    <h2 class="section-title" data-scramble>Let's Talk</h2>
+    <p class="contact-cta__text">Have a project, a question, or just want to say hi? My inbox is open.</p>
+    <a href="mailto:kylersmith1101@gmail.com" class="btn btn--primary">Say Hello</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__text">© <span id="year">2026</span> Kyler Smith. Built from scratch with HTML, CSS &amp; JS.</p>
+    <ul class="site-footer__social">
+      <li><a href="https://github.com/KylerNexTech" data-nav-link>GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/kyler-smith-7a7b10415/" data-nav-link>LinkedIn</a></li>
+      <li><a href="mailto:kylersmith1101@gmail.com">Email</a></li>
+    </ul>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  </div>
+</footer>
+
+<div class="settings-overlay" id="settingsOverlay" inert></div>
+<aside class="settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" inert>
+  <div class="settings-panel__header">
+    <h2 id="settingsTitle" class="settings-panel__title">Settings</h2>
+    <button class="icon-btn" id="settingsClose" aria-label="Close settings">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <div class="settings-panel__body">
+    <section class="settings-group">
+      <h3 class="settings-group__title">Appearance</h3>
+      <div class="settings-row">
+        <div>
+          <p class="settings-row__label">Dark Mode</p>
+          <p class="settings-row__desc">Switch between dark and light interface.</p>
+        </div>
+        <button class="switch" id="darkModeSwitch" role="switch" aria-checked="true" aria-label="Toggle dark mode">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </button>
+      </div>
+    </section>
+    <section class="settings-group">
+      <h3 class="settings-group__title">Audio</h3>
+      <div class="settings-row">
+        <div>
+          <p class="settings-row__label">Sound Effects</p>
+          <p class="settings-row__desc">Interface clicks and glitch blips.</p>
+        </div>
+        <button class="switch" id="sfxSwitch" role="switch" aria-checked="true" aria-label="Toggle sound effects">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </button>
+      </div>
+      <div class="settings-row">
+        <div>
+          <p class="settings-row__label">Background Music</p>
+          <p class="settings-row__desc">Quiet generative ambient loop.</p>
+        </div>
+        <button class="switch" id="musicSwitch" role="switch" aria-checked="false" aria-label="Toggle background music">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </button>
+      </div>
+    </section>
+  </div>
+  <div class="settings-panel__footer">
+    <p class="settings-panel__note">Preferences save to this browser only.</p>
+  </div>
+</aside>
+
+</body>
+</html>

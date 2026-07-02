@@ -1,148 +1,325 @@
-  /* base body making sure no need to scroll */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  
+ 
+ 
+ 
+ /* ------------------------------------------------------
+   RESET / BASE
+   No scrolling anywhere, page always fits the viewport.
+------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #12110f;
-  }
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #12110f;
+}
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    cursor: pointer;
-  }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: none; /* the hammer replaces the system cursor */
+}
 
- /* background */
-  .backdrop {
+/* ------------------------------------------------------
+   BACKGROUND
+------------------------------------------------------- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 38%, #24221e 0%, #171613 45%, #0c0b0a 100%);
+}
+
+.backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------
+   HERO IMAGE
+------------------------------------------------------- */
+.stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 82vh;
+}
+
+.hero-image {
+  height: 100%;
+  max-height: 82vh;
+  width: auto;
+  max-width: 40vw;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow:
+    0 2px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(230, 220, 200, 0.06);
+  filter: saturate(0.98);
+  display: block;
+}
+
+.hammerCursor {
+  position: fixed;
+  z-index: 50;
+  height: 1-px;
+  width: 10px;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.glow {
+  position: absolute;
+  z-index: 0;
+  width: 46vw;
+  height: 60vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(180, 150, 105, 0.10) 0%, rgba(180, 150, 105, 0) 70%);
+  pointer-events: none;
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* ------------------------------------------------------
+   CRACKS OVERLAY
+   Positioned to exactly cover the hero image.
+------------------------------------------------------- */
+#cracksOverlay {
+  position: fixed;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.crack-line {
+  opacity: 0;
+  animation: crackIn 0.25s ease forwards;
+}
+
+@keyframes crackIn {
+  to { opacity: 1; }
+}
+
+/* ------------------------------------------------------
+   WIND BURST (white cloud that expands from the impact
+   point, then dissipates from the middle outward)
+------------------------------------------------------- */
+#burstLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.burst-cloud {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  background: radial-gradient(circle,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.75) 30%,
+    rgba(255, 255, 255, 0.35) 55%,
+    rgba(255, 255, 255, 0) 78%);
+  filter: blur(3px);
+  animation: burstExpand 0.75s ease-out forwards;
+}
+
+@keyframes burstExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(6.5);
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------
+   HAMMER CURSOR
+   Pinned to the mouse position at its bottom-center point
+   (the handle end), rotates around that point so it can
+   swing like it's being held.
+------------------------------------------------------- */
+#hammerCursor {
+  position: fixed;
+  z-index: 50;
+  width: 130px;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+/* ------------------------------------------------------
+   HUD (functional placeholders — styling comes later)
+------------------------------------------------------- */
+.hud {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  z-index: 6;
+  color: rgba(230, 224, 210, 0.55);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.hud .countdown span {
+  color: rgba(230, 224, 210, 0.9);
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------
+   SOUND TOGGLE
+------------------------------------------------------- */
+.sound-toggle {
+  position: fixed;
+  top: 5vh;
+  right: 5vw;
+  z-index: 51;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(230, 224, 210, 0.16);
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.sound-toggle:hover {
+  border-color: rgba(230, 224, 210, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sound-toggle svg {
+  width: 15px;
+  height: 15px;
+  fill: rgba(230, 224, 210, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow { animation: none; }
+}
+
+@media (max-height: 700px) {
+  .stage { height: 78vh; }
+  .hero-image { max-height: 78vh; }
+}
+
+
+ .cursorInverted{
     position: fixed;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(ellipse 70% 55% at 50% 38%, #24221e 0%, #171613 45%, #0c0b0a 100%);
-  }
-  /* makes background look less generic  */
-  .backdrop::after {
+    width: 80px;
+    height: 80px;
+    background: white;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    border: 3px solid gray;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+body.cursor-active .cursorInverted{
+    opacity: 1;
+}
+
+.glitch-layer{
+    position:absolute;
+    inset:0;
+    /* background-color:white;
+    color:white;*/
+    mix-blend-mode: difference; 
+    background-size:cover;
+    /* background-position:center; */
+    
+    background-image:inherit;
+   /* backdrop-filter: invert(1); */
+    opacity:70%;
+
+    pointer-events:none;
+    width:inherit;
+    height:inherit;
+    background-position:inherit;
+    z-index:50;
+}
+
+.invert-hover{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Makes image fill wrapper */
+
+.invert-hover img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Inverted layer */
+
+.invert-hover::after{
     content: "";
     position: absolute;
     inset: 0;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
 
-  /* hero img */
-  .stage {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 82vh;
-    transition: transform 0.6s ease;
-  }
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
 
-  body:hover .stage {
-    transform: scale(1.008);
-  }
+    filter: invert(1);
 
-  .hero-image {
-    height: 100%;
-    max-height: 82vh;
-    width: auto;
-    max-width: 40vw;
-    object-fit: contain;
-    border-radius: 3px;
-    box-shadow:
-      0 2px 60px rgba(0, 0, 0, 0.55),
-      0 0 0 1px rgba(230, 220, 200, 0.06);
-    filter: saturate(0.98);
-  }
+    clip-path: circle(0px at var(--x,50%) var(--y,50%));
 
-  /* image glow */
-  .glow {
-    position: absolute;
-    z-index: 0;
-    width: 46vw;
-    height: 60vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(180, 150, 105, 0.10) 0%, rgba(180, 150, 105, 0) 70%);
+    transition: clip-path 1s cubic-bezier(.22, 1, .36, 1);
+
     pointer-events: none;
-    animation: breathe 6s ease-in-out infinite;
-  }
+}
+.invert-hover.active::after{
+    clip-path: circle(var(--radius) at var(--x,50%) var(--y,50%));
+}
 
-  @keyframes breathe {
-    0%, 100% { opacity: 0.7; }
-    50% { opacity: 1; }
-  }
-
-  
-  /* enter tip */
-  .enter-hint {
-    position: fixed;
-    bottom: 6vh;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(230, 224, 210, 0.38);
-    animation: pulse 2.6s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.28; }
-    50% { opacity: 0.65; }
-  }
-
- /* sound toggle */
-  .sound-toggle {
-    position: fixed;
-    top: 5vh;
-    right: 5vw;
-    z-index: 3;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 1px solid rgba(230, 224, 210, 0.16);
-    background: rgba(255, 255, 255, 0.02);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: border-color 0.3s ease, background 0.3s ease;
-  }
-
-  .sound-toggle:hover {
-    border-color: rgba(230, 224, 210, 0.35);
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .sound-toggle svg {
-    width: 15px;
-    height: 15px;
-    fill: rgba(230, 224, 210, 0.55);
-  }
-
-  /* Respect reduced motion preferences AI MADE*/
-  @media (prefers-reduced-motion: reduce) {
-    .glow, .enter-hint, .stage { animation: none; transition: none; }
-  }
-
-  /* for viewport on shorter screens */
-  @media (max-height: 700px) {
-    .stage { height: 78vh; }
-    .hero-image { max-height: 78vh; }
-  }
+    

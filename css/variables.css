@@ -1,0 +1,104 @@
+/* ==========================================================================
+   VARIABLES — Design Tokens
+   --------------------------------------------------------------------------
+   Every color, font, spacing value, and timing on this site is pulled from
+   here. Want to reskin the whole site? Start and end in this file.
+
+   Theme switching works by swapping the values under [data-theme="light"].
+   Dark is the default (set on :root) so the site still looks correct even
+   if JavaScript fails to load.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: Dark theme (default) ---- */
+  --color-bg: #0a0a0d;
+  --color-bg-rgb: 10, 10, 13;
+  --color-bg-alt: #101014;
+  --color-surface: #17171d;
+  --color-surface-hover: #1e1e26;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-strong: rgba(255, 255, 255, 0.2);
+
+  --color-text: #eeeef2;
+  --color-text-dim: #9d9da8;
+  --color-text-faint: #6b6b75;
+
+  --color-accent: #3ff0e0;
+  --color-accent-rgb: 63, 240, 224;
+  --color-accent-2: #ff3fa4;
+  --color-accent-2-rgb: 255, 63, 164;
+  --color-warn: #ff5a5a;
+
+  --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  /* ---- Typography ---- */
+  --font-display: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --fs-3xl: clamp(2.25rem, 1.7rem + 2.4vw, 3.25rem);
+  --fs-4xl: clamp(2.75rem, 1.9rem + 3.8vw, 4.5rem);
+  --fs-5xl: clamp(3.25rem, 2rem + 5.5vw, 6rem);
+
+  /* ---- Spacing (4px base grid) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+  --space-16: 8rem;
+
+  /* ---- Layout ---- */
+  --container-max: 1180px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms var(--ease-out);
+  --transition-slow: 450ms var(--ease-out);
+
+  /* ---- Z-index scale ---- */
+  --z-nav: 100;
+  --z-overlay: 500;
+  --z-panel: 600;
+  --z-modal: 700;
+}
+
+[data-theme='light'] {
+  --color-bg: #f6f6f8;
+  --color-bg-rgb: 246, 246, 248;
+  --color-bg-alt: #eceef0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f1f4;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-strong: rgba(0, 0, 0, 0.18);
+
+  --color-text: #131318;
+  --color-text-dim: #52525c;
+  --color-text-faint: #85858f;
+
+  /* Darkened vs. the dark-theme accents to hold WCAG AA contrast on a light surface */
+  --color-accent: #067b70;
+  --color-accent-rgb: 6, 123, 112;
+  --color-accent-2: #c81b74;
+  --color-accent-2-rgb: 200, 27, 116;
+  --color-warn: #c22929;
+
+  --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.12);
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);
+}

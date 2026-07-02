@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>
+  /* Blocking, synchronous: sets the theme attribute before first paint so
+     there is no flash of the wrong theme. Keep this inline — moving it to
+     an external file defeats the purpose. */
+  (function () {
+    try {
+      var stored = localStorage.getItem('portfolio:theme');
+      var theme = (stored === 'dark' || stored === 'light')
+        ? stored
+        : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyler Smith — Portfolio</title>
+<meta name="description" content="Portfolio of Kyler Smith — designer and developer. Browse selected projects, read about me, and get in touch.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0d'/><path d='M22 34 L48 50 L22 66' stroke='%233ff0e0' stroke-width='9' fill='none' stroke-linecap='round' stroke-linejoin='round'/><line x1='56' y1='68' x2='80' y2='68' stroke='%23ff3fa4' stroke-width='9' stroke-linecap='round'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/glitch.css">
+<link rel="stylesheet" href="css/home.css">
+
+<script src="js/data.js" defer></script>
+<script src="js/theme.js" defer></script>
+<script src="js/sound.js" defer></script>
+<script src="js/effects.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/settings-panel.js" defer></script>
+<script src="js/main.js" defer></script>
+</head>
+<body data-page="home">
+<div class="scanlines" aria-hidden="true"></div>
+<noscript><div class="noscript-banner">This site's navigation and effects need JavaScript. The content below still works without it.</div></noscript>
+
+<!-- ============================== HEADER ============================== -->
+<!-- NOTE: this header block is duplicated in home.html / about.html / projects.html.
+     Keep the three in sync, or add a fourth copy if you add a page. -->
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="home.html" class="logo" data-nav-link>
+      <span class="logo__mark" aria-hidden="true">&lt;/&gt;</span>
+      <span class="logo__text glitch-hover" data-text="KYLER SMITH">KYLER SMITH</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNavList">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <ul class="site-nav__list" id="siteNavList">
+        <li><a href="home.html" data-nav-link class="site-nav__link" aria-current="page">Home</a></li>
+        <li><a href="about.html" data-nav-link class="site-nav__link">About</a></li>
+        <li><a href="projects.html" data-nav-link class="site-nav__link">Projects</a></li>
+      </ul>
+    </nav>
+
+    <button class="icon-btn settings-toggle" id="settingsToggle" aria-haspopup="dialog" aria-controls="settingsPanel" aria-expanded="false" aria-label="Open settings">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2" fill="var(--color-surface)"/>
+        <line x1="4" y1="12" x2="20" y2="12"/><circle cx="16" cy="12" r="2" fill="var(--color-surface)"/>
+        <line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2" fill="var(--color-surface)"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <span class="glitch-block" aria-hidden="true"></span>
+    <span class="glitch-block" aria-hidden="true"></span>
+    <span class="glitch-block" aria-hidden="true"></span>
+    <div class="container hero__inner">
+      <p class="hero__eyebrow">/// SYSTEM ONLINE</p>
+      <h1 class="hero__title" data-scramble>KYLER SMITH</h1>
+      <p class="hero__role" id="roleCycle" aria-live="polite">Designer.</p>
+      <p class="hero__statement">
+        A Visionary, and the same motives for every project:<br class="hide-mobile">
+        learn, improve, and leave each project a reflection of himself.
+      </p>
+      <div class="hero__cta">
+        <a href="projects.html" class="btn btn--primary" data-nav-link>View Projects</a>
+        <a href="about.html" class="btn btn--ghost" data-nav-link>About Me</a>
+      </div>
+    </div>
+    <button class="scroll-cue" id="scrollCue" aria-label="Scroll to learn more">
+      <span></span>
+    </button>
+  </section>
+
+  <!-- ============================== CONCEPT ============================== -->
+  <section class="concept container">
+    <h2 class="section-title" data-scramble>A Note on the Theme</h2>
+    <p class="concept__text">
+      A glitch isn't really a failure, it's a moment where a system's structure becomes
+      visible through its surface. My portfolio is built the same way. Every portion is a
+      window about who I am. This applies to the glitch itself because trying to get me to fit into one category causes an error.
+    </p>
+    <p class="concept__text">
+      So things here glitch on purpose. Text reveals itself like it's decrypting. Nothing here is broken, rather
+      it's just showing its structure.
+    </p>
+  </section>
+
+  <!-- ============================== INTRO CARDS ============================== -->
+  <section class="intro-cards container">
+    <a class="intro-card" href="about.html" data-nav-link>
+      <span class="intro-card__index">01</span>
+      <h3 class="intro-card__title glitch-hover" data-text="About Me">About Me</h3>
+      <p class="intro-card__text">Learn more about my background, skills, and journey.</p>
+      <span class="intro-card__cta">Learn more →</span>
+    </a>
+    <a class="intro-card" href="projects.html" data-nav-link>
+      <span class="intro-card__index">02</span>
+      <h3 class="intro-card__title glitch-hover" data-text="Projects">Projects</h3>
+      <p class="intro-card__text">Explore my work and the stories behind it.</p>
+      <span class="intro-card__cta">View Projects →</span>
+    </a>
+  </section>
+
+  <!-- ============================== FEATURED WORK ============================== -->
+  <section class="featured container">
+    <div class="featured__header">
+      <h2 class="section-title" data-scramble>Highlighted Work</h2>
+      <a href="projects.html" class="featured__link glitch-hover" data-text="View all →" data-nav-link>View all →</a>
+    </div>
+    <div class="featured__grid" id="featuredProjects">
+      <!-- Populated by main.js from the PROJECTS array in js/data.js -->
+    </div>
+  </section>
+
+  <!-- ============================== TERMINAL / THOUGHTS ============================== -->
+  <section class="terminal-block container">
+    <div class="terminal">
+      <div class="terminal__bar">
+        <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
+        <span class="terminal__title">thoughts.log</span>
+      </div>
+      <div class="terminal__body">
+        <p><span class="terminal__prompt">&gt;</span> <span id="terminalText" class="terminal__text"></span><span class="terminal__cursor" aria-hidden="true">▌</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__text">© <span id="year">2026</span> Kyler Smith. Built from scratch with HTML, CSS &amp; JS.</p>
+    <ul class="site-footer__social">
+      <li><a href="#" data-nav-link>GitHub</a></li>
+      <li><a href="#" data-nav-link>LinkedIn</a></li>
+      <li><a href="mailto:kylersmith1101@gmail.com">Email</a></li>
+    </ul>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  </div>
+</footer>
+
+<!-- ============================== SETTINGS PANEL ============================== -->
+<!-- NOTE: duplicated across all three pages so it works with no build step. -->
+<div class="settings-overlay" id="settingsOverlay" inert></div>
+<aside class="settings-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" inert>
+  <div class="settings-panel__header">
+    <h2 id="settingsTitle" class="settings-panel__title">Settings</h2>
+    <button class="icon-btn" id="settingsClose" aria-label="Close settings">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <div class="settings-panel__body">
+    <section class="settings-group">
+      <h3 class="settings-group__title">Appearance</h3>
+      <div class="settings-row">
+        <div>
+          <p class="settings-row__label">Dark Mode</p>
+          <p class="settings-row__desc">Switch between dark and light interface.</p>
+        </div>
+        <button class="switch" id="darkModeSwitch" role="switch" aria-checked="true" aria-label="Toggle dark mode">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </button>
+      </div>
+    </section>
+    <section class="settings-group">
+      <h3 class="settings-group__title">Audio</h3>
+      <div class="settings-row">
+        <div>
+          <p class="settings-row__label">Sound Effects</p>
+          <p class="settings-row__desc">Interface clicks and glitch blips.</p>
+        </div>
+        <button class="switch" id="sfxSwitch" role="switch" aria-checked="true" aria-label="Toggle sound effects">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </button>
+      </div>
+      <div class="settings-row">
+        <div>
+          <p class="settings-row__label">Background Music</p>
+          <p class="settings-row__desc">Quiet generative ambient loop.</p>
+        </div>
+        <button class="switch" id="musicSwitch" role="switch" aria-checked="false" aria-label="Toggle background music">
+          <span class="switch__track"><span class="switch__thumb"></span></span>
+        </button>
+      </div>
+    </section>
+  </div>
+  <div class="settings-panel__footer">
+    <p class="settings-panel__note">Preferences save to this browser only.</p>
+  </div>
+</aside>
+
+</body>
+</html>
