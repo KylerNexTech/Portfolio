@@ -205,6 +205,12 @@ async function performSwing() {
   hammer.style.transform = `translate(-50%, -100%) rotate(${baseAngle + SLAM_OVERSHOOT}deg)`;
   await sleep(SLAM_DURATION);
 
+  // PLAY THE MACE SOUND (respects the mute rule)
+  if (!userMuted && Mace) {
+    Mace.currentTime = 0;
+    Mace.play().catch(() => {});
+  }
+
   // Impact: wind burst cloud + hammer relaxing back, at the same time
   triggerBurst();
   hammer.style.transition = `transform ${SETTLE_DURATION}ms ease-out`;
