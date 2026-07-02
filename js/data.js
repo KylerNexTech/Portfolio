@@ -35,8 +35,8 @@ var PROJECTS = [
     role: 'Frontend Developer',
     tags: ['JavaScript', 'D3.js', 'WebSockets'],
     description: 'Replace this with a real paragraph about the project: the problem it solved, the constraints you were working under, the decisions you made, and what you would do differently now.',
-    liveUrl: '#',
-    codeUrl: '#'
+    liveUrl: 'http://127.0.0.1:3004/Stopwar.html?vscode-livepreview=true',
+    codeUrl: 'https://github.com/KylerNexTech/StopWarProject.git'
   },
   {
     id: 'fragments',
@@ -46,8 +46,8 @@ var PROJECTS = [
     role: 'Design & Engineering',
     tags: ['Design Systems', 'CSS', 'Storybook'],
     description: 'Replace this with a real paragraph about the project. What made it interesting, technically or conceptually? What did you learn?',
-    liveUrl: '#',
-    codeUrl: '#'
+    liveUrl: 'http://127.0.0.1:3006/index.html?vscode-livepreview=true',
+    codeUrl: 'https://github.com/KylerNexTech/Rock-Paper-Scissors.git'
   },
   {
     id: 'lowfi',
