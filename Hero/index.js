@@ -15,7 +15,7 @@ const Mace = document.getElementById('Mace');
    CONFIG (functionality pass — visuals/timings can be
    tuned freely, nothing else depends on these values)
 ------------------------------------------------------- */
-const DESTINATION       = '../home.html'; // where to go after the swing sequence finishes
+const DESTINATION       = 'home.html'; // where to go after the swing sequence finishes
 
 const COUNTDOWN_START   = 20;    // seconds before an idle hammer auto-swings
 const CRACKS_ON_HIT     = 6;     // "a decent amount but not too many"
