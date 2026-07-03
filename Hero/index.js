@@ -239,6 +239,7 @@ let userMuted = false;
 function setIcon(muted) { soundIcon.innerHTML = muted ? MUTED_ICON : UNMUTED_ICON; }
 function tryPlay() {
   if (userMuted) return;
+  music.volume = 0.1;
   music.play().catch(() => {});
 }
 tryPlay();
